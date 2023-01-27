@@ -55,6 +55,10 @@ function displayTime() {
     let year = timeNow.getFullYear();
     let period = "AM";
 
+    if (minutes % 5 === 0) {
+        window.location.reload(true);
+    }
+
     if (hoursOfDay > 12) {
         hoursOfDay-= 12;
         period = "PM";
