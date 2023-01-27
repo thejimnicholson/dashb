@@ -44,6 +44,7 @@ p {
 }
 
 .glow {
+    margin-top: 20px;
     font-size: 60px;
     color: #fff;
     font-weight: bold;

@@ -71,7 +71,7 @@ function displayTime() {
 
     let time = hoursOfDay + ":" + minutes + ":" + seconds + period;
 
-    document.getElementById('Clock').innerHTML = time + "<br/>" + today + "<br/>" + months + " " + thisDay + " " + year;
+    document.getElementById('Clock').innerHTML = time + "<br/>" + today + "<br/>" + months + " " + thisDay;
 
 }
 displayTime();
