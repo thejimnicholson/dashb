@@ -3,8 +3,8 @@ setInterval(displayTime, 1000);
 $(document).ready(function(){
 
     var times = SunCalc.getTimes(new Date(), 45.51, -122.84);
-    document.getElementById('sunrise').innerText = "Sunrise: " + times.sunrise.getHours() + ':' + times.sunrise.getMinutes();
-    document.getElementById('sunset').innerText = "Sunset: " + times.sunset.getHours() + ':' + times.sunset.getMinutes();
+    document.getElementById('sunrise').innerText = "Sunrise: " + formatTime(times.sunrise);
+    document.getElementById('sunset').innerText = "Sunset: " + formatTime(times.sunset);
 	var d = new Date();
 	var n = d.getHours();
 	if ((n > (times.sunset.getHours() + 1)) || (n < times.sunrise.getHours() -1))
@@ -17,6 +17,27 @@ $(document).ready(function(){
 	  // Else use ‘day’ theme
 	  document.body.className = "day";
 });
+
+function formatTime(thisTime) {
+    let hrs = thisTime.getHours();
+    let mins = thisTime.getMinutes();
+    let period = "AM";
+    if (hrs > 12) {
+        hrs -= 12;
+        period = "PM";
+    }
+
+    if (hrs === 0) {
+        hrs = 12;
+        period = "AM"
+    }
+
+    hrs = hrs < 10 ? "0" + hrs : hrs;
+    mins = mins < 10 ? "0" + mins : mins;
+    let time = hrs + ":" + mins + period;
+    return time;
+}
+
 
 function displayTime() {
 
