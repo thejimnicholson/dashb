@@ -1,22 +1,24 @@
 setInterval(displayTime, 1000);
 
-$(document).ready(function(){
-
+$(document).ready(function() {
     var times = SunCalc.getTimes(new Date(), 45.51, -122.84);
     document.getElementById('sunrise').innerText = "Sunrise: " + formatTime(times.sunrise);
     document.getElementById('sunset').innerText = "Sunset: " + formatTime(times.sunset);
-	var d = new Date();
-	var n = d.getHours();
-	if ((n > (times.sunset.getHours() + 1)) || (n < times.sunrise.getHours() -1))
-	  // If time is after 7PM or before 6AM, apply night theme to ‘body’
-	  document.body.className = "night";
-	else if (n >= (times.sunset.getHours() - 1) && n <= (times.sunset.getHours() + 1))
-	  // If time is between 4PM – 7PM sunset theme to ‘body’
-	  document.body.className = "sunset";
-	else
-	  // Else use ‘day’ theme
-	  document.body.className = "day";
+    document.body.className = getBackground(new Date(),times.sunrise,times.sunset);
 });
+
+function getBackground(thisTime,sunrise,sunset) {
+	var n = thisTime.getHours();
+    let bg_class = "day";
+    if ((n >= sunrise.getHours() -1) && (n <= sunrise.getHours() + 1)) 
+        bg_class = "sunrise";
+    else if ((n >= sunset.getHours() - 1) && n <= (sunset.getHours() + 1))
+        bg_class = "sunset";
+	else if ((n >= (sunset.getHours() + 1)) || (n <= sunrise.getHours() -1))
+        bg_class = "night";
+    return bg_class;
+}
+
 
 function formatTime(thisTime) {
     let hrs = thisTime.getHours();
@@ -56,7 +58,12 @@ function displayTime() {
     let period = "AM";
 
     if (minutes % 5 === 0) {
-        window.location.reload(true);
+        var times = SunCalc.getTimes(new Date(), 45.51, -122.84);
+
+
+        document.getElementById('sunrise').innerText = "Sunrise: " + formatTime(times.sunrise);
+        document.getElementById('sunset').innerText = "Sunset: " + formatTime(times.sunset);
+        document.body.className = getBackground(timeNow,times.sunrise,times,sunset);
     }
 
     if (hoursOfDay > 12) {
