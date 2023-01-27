@@ -63,7 +63,7 @@ function displayTime() {
         month: "long"
     });
     let year = timeNow.getFullYear();
-    let period = "AM";
+
 
     if (minutes % 5 === 0) {
         var times = SunCalc.getTimes(timeNow, myLat, myLong);

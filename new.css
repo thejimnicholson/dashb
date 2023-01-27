@@ -67,7 +67,10 @@ p {
     background: url('night-moon.jpg') #000;
     background-repeat: no-repeat;
 }
-
+.sunrise {
+    background: url('sunrise.jpg') #000;
+    background-repeat: no-repeat;
+}
 #Sun {
     color: #fff;
     font-weight: bold;
