@@ -55,9 +55,18 @@ p {
      text-shadow: 2px 2px 0 #969696, 7px 7px 5px #aba8a8;
 }
 
-.day { background: url('daytime.jpg'); }
-.sunset { background: url('sunset.jpg'); }
-.night { background: url('night-moon.jpg'); }
+.day { 
+    background: url('daytime.jpg') #000; 
+    background-repeat: no-repeat;
+}
+.sunset { 
+    background: url('sunset.jpg') #000; 
+    background-repeat: no-repeat;
+}
+.night { 
+    background: url('night-moon.jpg') #000;
+    background-repeat: no-repeat;
+}
 
 #Sun {
     color: #fff;
