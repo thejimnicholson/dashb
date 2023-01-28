@@ -24,6 +24,10 @@ function getBackground(thisTime,sunrise,sunset) {
     return bg_class;
 }
 
+function setBackground(bg_image) {
+    document.body.style.backgroundImage = `url("${bg_image}.jpg)`
+}
+
 
 function formatTime(thisTime, showSecs = false) {
     let hrs = thisTime.getHours();
@@ -69,7 +73,8 @@ function displayTime() {
         var times = SunCalc.getTimes(timeNow, myLat, myLong);
         document.getElementById('sunrise').innerText = "Sunrise: " + formatTime(times.sunrise);
         document.getElementById('sunset').innerText = "Sunset: " + formatTime(times.sunset);
-        document.body.className = getBackground(timeNow,times.sunrise,times,sunset);
+        let bg_image = getBackground(timeNow,times.sunrise,times,sunset);
+        setBackground(bg_image);
     }
 
     let time = formatTime(timeNow,true);

@@ -56,7 +56,7 @@ p {
 }
 
 .day { 
-    background: url('daytime.jpg') #000; 
+    background: url('day.jpg') #000; 
     background-repeat: no-repeat;
 }
 .sunset { 
@@ -64,7 +64,7 @@ p {
     background-repeat: no-repeat;
 }
 .night { 
-    background: url('night-moon.jpg') #000;
+    background: url('night.jpg') #000;
     background-repeat: no-repeat;
 }
 .sunrise {
