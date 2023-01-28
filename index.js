@@ -9,7 +9,8 @@ $(document).ready(function() {
     var times = SunCalc.getTimes(new Date(), myLat, myLong);
     document.getElementById('sunrise').innerText = "Sunrise: " + formatTime(times.sunrise);
     document.getElementById('sunset').innerText = "Sunset: " + formatTime(times.sunset);
-    document.body.className = getBackground(new Date(),times.sunrise,times.sunset);
+    let bg_image = getBackground(new Date(),times.sunrise,times.sunset);
+    setBackground(bg_image);
 });
 
 function getBackground(thisTime,sunrise,sunset) {
@@ -19,13 +20,15 @@ function getBackground(thisTime,sunrise,sunset) {
         bg_class = "sunrise";
     else if ((n >= sunset.getHours() - 1) && (n <= sunset.getHours() + 1))
         bg_class = "sunset";
-	else if ((n >= (sunset.getHours() + 1)) || (n <= sunrise.getHours() - 1))
+	else if (((n >= sunset.getHours() + 1)) || (n <= sunrise.getHours() - 1))
         bg_class = "night";
     return bg_class;
 }
 
 function setBackground(bg_image) {
-    document.body.style.backgroundImage = `url("${bg_image}.jpg)`
+    document.body.style.backgroundImage = `url("${bg_image}.jpg")`;
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundColor = "#000";
 }
 
 
@@ -68,12 +71,13 @@ function displayTime() {
     });
     let year = timeNow.getFullYear();
 
+    var times = SunCalc.getTimes(timeNow, myLat, myLong);
 
     if (minutes % 5 === 0) {
-        var times = SunCalc.getTimes(timeNow, myLat, myLong);
+  
         document.getElementById('sunrise').innerText = "Sunrise: " + formatTime(times.sunrise);
         document.getElementById('sunset').innerText = "Sunset: " + formatTime(times.sunset);
-        let bg_image = getBackground(timeNow,times.sunrise,times,sunset);
+        let bg_image = getBackground(timeNow,times.sunrise,times.sunset);
         setBackground(bg_image);
     }
 
