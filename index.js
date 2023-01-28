@@ -17,7 +17,7 @@ function getBackground(thisTime,sunrise,sunset) {
     let bg_class = "day";
     if ((n >= sunrise.getHours() -1) && (n <= sunrise.getHours() + 1)) 
         bg_class = "sunrise";
-    else if ((n >= sunset.getHours() - 1) && n <= (sunset.getHours() + 1))
+    else if ((n >= sunset.getHours() - 1) && (n <= sunset.getHours() + 1))
         bg_class = "sunset";
 	else if ((n >= (sunset.getHours() + 1)) || (n <= sunrise.getHours() - 1))
         bg_class = "night";
