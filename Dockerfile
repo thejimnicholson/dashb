@@ -1,4 +1,4 @@
-FROM busybox:1.35
+FROM arm64v8/busybox:1.36
 
 # Create a non-root user to own the files and run our server
 RUN adduser -D static
